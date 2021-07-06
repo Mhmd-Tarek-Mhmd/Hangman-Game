@@ -1,0 +1,268 @@
+/*------------------------ Global Style ------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  font-family: Tahoma, Arial;
+  --black: #222;
+  --line-width: 4px;
+}
+
+/*------------------------ App Style ------------------------*/
+.game-container {
+  margin: auto;
+  width: 1000px;
+  padding: 20px;
+}
+@media (max-width: 700px) {
+  .game-container {
+    width: 600px;
+  }
+}
+@media (max-width: 400px) {
+  .game-container {
+    width: 300px;
+  }
+}
+.game-container > div:nth-of-type(2),
+.game-container > div:nth-of-type(3) {
+  float: left;
+  width: 49%;
+}
+.game-container > div:nth-of-type(2) {
+  margin-right: 2%;
+  margin-bottom: 15px;
+}
+@media (max-width: 700px) {
+  .game-container > div:nth-of-type(2),
+  .game-container > div:nth-of-type(3) {
+    width: 100%;
+  }
+  .game-container > div:nth-of-type(2) {
+    margin-right: 0;
+  }
+}
+
+/* [1] Game Info */
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+}
+.game-info .logo {
+  font-weight: bold;
+}
+.game-info .attempts span {
+  color: #ac1649;
+  font-size: 18px;
+}
+.game-info .category span {
+  text-transform: capitalize;
+  color: #ac1649;
+  font-weight: bold;
+}
+@media (max-width: 400px) {
+  .game-info {
+    justify-content: center;
+    align-items: center;
+  }
+  .game-info .logo {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+  .game-info .attempts {
+    order: 3;
+  }
+  .game-info .category {
+    order: 2;
+    margin-bottom: 10px;
+  }
+}
+
+/* [2] Hangman */
+.hangman {
+  background-color: #f8f8f8;
+  position: relative;
+  min-height: 320px;
+}
+
+/* -- Hang -- */
+.hangman .hang > div,
+.hangman .hang > div > span {
+  display: none;
+}
+.hangman .hang {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin-left: -90px;
+  height: 280px;
+}
+.hangman .hang .stand {
+  width: 60px;
+  border-bottom: var(--line-width) solid var(--black);
+  position: relative;
+  top: 100%;
+}
+.hangman .hang .bars {
+  position: relative;
+  left: calc(30px - var(--line-width) / 2);
+  width: var(--line-width);
+  height: calc(100% - var(--line-width));
+  background-color: var(--black);
+}
+.hangman .hang .bars span {
+  position: relative;
+  top: 15px;
+  background-color: var(--black);
+}
+.hangman .hang .bars span:first-child {
+  left: var(--line-width);
+  width: 100px;
+  height: var(--line-width);
+}
+.hangman .hang .bars span:last-child {
+  left: 100px;
+  width: var(--line-width);
+  height: 30px;
+}
+.hangman .hang .rope {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  position: relative;
+  left: calc(100px - var(--line-width));
+  top: calc(-100% + 49px);
+  border: var(--line-width) dashed var(--black);
+}
+
+/* -- Man -- */
+.hangman .man > div,
+.hangman .man > div > div {
+  display: none;
+}
+.hangman .man {
+  position: absolute;
+  top: 78px;
+  left: 50%;
+  transform: translateX(16px);
+}
+.hangman .man .head {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: var(--line-width) solid var(--black);
+}
+.hangman .man .body {
+  position: relative;
+  left: 23px;
+  background-color: var(--black);
+  width: var(--line-width);
+  height: 110px;
+}
+.hangman .man .arms::before,
+.hangman .man .arms::after,
+.hangman .man .legs::before,
+.hangman .man .legs::after {
+  content: "";
+  width: 50px;
+  position: absolute;
+  height: var(--line-width);
+  background-color: var(--black);
+}
+.hangman .man .arms::before,
+.hangman .man .arms::after {
+  top: 30px;
+}
+.hangman .man .legs::before,
+.hangman .man .legs::after {
+  top: 119px;
+}
+.hangman .man .arms::before,
+.hangman .man .legs::before {
+  left: 0;
+}
+.hangman .man .arms::after,
+.hangman .man .legs::after {
+  left: -46px;
+}
+.hangman .man .arms::before,
+.hangman .man .legs::after {
+  transform: rotate(-30deg);
+}
+.hangman .man .arms::after,
+.hangman .man .legs::before {
+  transform: rotate(30deg);
+}
+
+/* [3] Game Keyboard */
+.game-keyboard {
+  padding: 15px 0;
+  text-align: center;
+}
+.game-keyboard span {
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background-color: #009688;
+  color: #fff;
+  font-size: 24px;
+  line-height: 55px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+}
+.game-keyboard span.clicked {
+  background-color: var(--black);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* Word Guess */
+.word-guess {
+  background-color: #f8f8f8;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 100px;
+  clear: both;
+}
+.word-guess span {
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  margin-right: 10px;
+  line-height: 55px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #fdfdfd;
+  border-bottom: 3px solid var(--black);
+  transition: 0.3s;
+}
+.word-guess span:first-child,
+.word-guess span.space + .guessed {
+  text-transform: uppercase;
+}
+.word-guess span.space {
+  background: none;
+  border-bottom: none;
+  position: relative;
+}
+.word-guess span.space::before {
+  content: "";
+  width: 20px;
+  height: 4px;
+  background-color: var(--black);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

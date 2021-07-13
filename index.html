@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman</title>
+    <link rel="stylesheet" href="hangman.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="game-info">
+        <div class="logo">Hangman</div>
+        <div class="attempts">You have <span>9</span> Attempts</div>
+        <div class="category">Word Category: <span></span></div>
+      </div>
+
+      <div class="hangman">
+        <div class="hang">
+          <div class="stand"></div>
+          <div class="bars">
+            <span></span>
+            <span></span>
+          </div>
+          <div class="rope"></div>
+        </div>
+
+        <div class="man">
+          <div class="head"></div>
+          <div class="body">
+            <div class="arms"></div>
+            <div class="legs"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-keyboard"></div>
+
+      <div class="word-guess"></div>
+    </div>
+
+    <script src="js/sweetalert.js"></script>
+    <script src="js/hangman.js"></script>
+  </body>
+</html>
